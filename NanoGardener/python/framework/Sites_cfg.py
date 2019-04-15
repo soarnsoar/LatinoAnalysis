@@ -18,12 +18,12 @@ Sites = {
               'batchQueues' : ['8nh','1nd','2nd','1nw']
            } ,
 
-  'sdfarm' : {
-              'lsCmd'       : 'ls' ,
-              'mkDir'       : True ,
-              'xrootdPath'  : 'root://eoscms.cern.ch/' ,
-              'treeBaseDir' : '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/' ,
-             } ,
+  'sdfarm.kr' : {
+              'lsCmd'       : 'ls',
+              'mkDir'       : False ,
+              'xrootdPath'  : 'root://cms-xrdr.private.lo:2094/',
+              'treeBaseDir' : '/xrd/store/user/jhchoi/Latino/HWWNano/'
+              },
 
   'ifca' : {
               'lsCmd'       : 'ls' ,

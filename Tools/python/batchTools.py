@@ -349,9 +349,16 @@ class batchJobs :
          jdsFile.write('error = '+self.subDir+subDirExtra+'/'+jName+'.err\n')
          jdsFile.write('log = '+self.subDir+subDirExtra+'/'+jName+'.log\n')
          jdsFile.write('request_cpus = '+str(self.nThreads)+'\n')
-         if CONDOR_ACCOUNTING_GROUP:
-           jdsFile.write('+AccountingGroup = '+CONDOR_ACCOUNTING_GROUP+'\n')
-           jdsFile.write('accounting_group = '+CONDOR_ACCOUNTING_GROUP+'\n')
+         if 'ui10' in hostName:
+            jdsFile.write('requirements = OpSysMajorVer == 6 \n')
+         elif 'ui20' in hostName:
+           jdsFile.write('requirements = ( HasSingularity == true ) \n')
+           jdsFile.write('+SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el6:latest" \n')
+           jdsFile.write('+SingularityBind = "/cvmfs, /cms, /share" \n')
+
+         #if CONDOR_ACCOUNTING_GROUP:
+         #  jdsFile.write('+AccountingGroup = '+CONDOR_ACCOUNTING_GROUP+'\n')
+         #  jdsFile.write('accounting_group = '+CONDOR_ACCOUNTING_GROUP+'\n')
          #jdsFile.write('should_transfer_files = YES\n')
          #jdsFile.write('when_to_transfer_output = ON_EXIT\n')
          #jdsFile.write('transfer_input_files = '+jName+'.sh\n')
@@ -359,7 +366,7 @@ class batchJobs :
          jdsFile.close()
          #print "jdsFile: ", jdsFileName,"jidFile: ", jidFile 
          # We write the JDS file for documentation / resubmission, but initial submission will be done in one go below
-         # jobid=os.system('condor_submit '+jdsFileName+' > ' +jidFile)
+         jobid=os.system('condor_submit '+jdsFileName+' > ' +jidFile)
        elif 'ifca' in hostName :
          jobid=os.system('qsub -P l.gaes -S /bin/bash -cwd -N Latino -o '+outFile+' -e '+errFile+' '+jobFile+' -j y > '+jidFile)
        elif "pi.infn.it" in socket.getfqdn():
@@ -571,8 +578,8 @@ def batchResub(Dir='ALL',queue='longlunch',requestCpus=1,IiheWallTime='168:00:00
       MaxRunTime = (runtimes[flavours.index(queue)] - 1) * 60
 
       scheduler = 'condor'
-    elif 'sdfarm' in hostName:
-      scheduler = 'condor'
+    #elif 'sdfarm' in hostName:
+    #  scheduler = 'condor'
 
     for iDir in DirList:
       subDir = jobDir+'/'+iDir
