@@ -359,7 +359,7 @@ class batchJobs :
          elif 'ui20' in hostName:
            jdsFile.write('requirements = ( HasSingularity == true ) \n')
            jdsFile.write('+SingularityImage = ""/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el6:latest"" \n')
-           jdsFile.write('+SingularityBind = ""/cvmfs, /cms, /share"" \n')
+           jdsFile.write('+SingularityBind = "/cvmfs, /cms, /share" \n')
            jdsFile.write('accounting_group=group_cms\n')
          #jdsFile.write('should_transfer_files = YES\n')
          #jdsFile.write('when_to_transfer_output = ON_EXIT\n')
