@@ -34,7 +34,7 @@ class rochester_corr(TreeCloner):
         self.isdata = int(opts.isdata)
 
         try:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/RoccoR.cc+g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/RoccoR.cc')
         except RuntimeError:
             ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/RoccoR.cc++g')
        

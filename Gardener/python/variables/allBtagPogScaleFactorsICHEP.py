@@ -81,7 +81,7 @@ class allBtagPogScaleFactorsICHEP(TreeCloner):
 
         #ROOT.gROOT.ProcessLine(".L "+cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/BTagCalibrationStandaloneStandalone.cc+')
         try:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/BTagCalibrationStandalone.cc+g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/BTagCalibrationStandalone.cc')
         except RuntimeError:
             ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/BTagCalibrationStandalone.cc++g')
         #ROOT.gROOT.ProcessLine('.L BTagCalibrationStandaloneStandalone.cc+') 

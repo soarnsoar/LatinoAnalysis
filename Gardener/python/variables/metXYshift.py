@@ -72,7 +72,7 @@ class MetXYshiftTreeMaker(TreeCloner) :
 	#print 'para. name:', paraSet.name, paraSet.varType, paraSet.fx, paraSet.paraX[0], paraSet.paraX[1], paraSet.fy, paraSet.paraY[0], paraSet.paraY[1]
 	#self.extractPara()
         try:
-            ROOT.gROOT.LoadMacro(self.cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/metXYshift.C+g')
+            ROOT.gROOT.LoadMacro(self.cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/metXYshift.C')
         except RuntimeError:
             ROOT.gROOT.LoadMacro(self.cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/metXYshift.C++g')
 	

@@ -11,7 +11,7 @@ class GGHUncertaintyProducer(Module):
         self.uncertaintyVariables = [ 'ggH_mu', 'ggH_res', 'ggH_mig01', 'ggH_mig12', 'ggH_pT60', 'ggH_pT120', 'ggH_VBF2j', 'ggH_VBF3j', 'ggH_qmtop' ]
         cmssw_base = os.getenv('CMSSW_BASE')
         try:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C+g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C')
         except RuntimeError:
             ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C++g')
         #----------------------------------------------------------------------------------------------------

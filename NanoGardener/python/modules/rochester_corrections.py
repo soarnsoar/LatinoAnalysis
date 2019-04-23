@@ -22,7 +22,7 @@ class rochester_corr(Module):
         self.isdata = isdata
         print "Loading macros from "+cmssw_base+"/src/LatinoAnalysis/NanoGardener/python/modules/RoccoR_NG.cc"
         try:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/NanoGardener/python/modules/RoccoR_NG.cc+g')                                                                    
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/NanoGardener/python/modules/RoccoR_NG.cc')                                                                    
         except RuntimeError: 
             ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/NanoGardener/python/modules/RoccoR_NG.cc++g')      
         print "Loaded"  
