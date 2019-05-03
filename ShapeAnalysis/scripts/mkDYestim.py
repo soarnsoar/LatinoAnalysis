@@ -70,9 +70,9 @@ if __name__ == '__main__':
     # Load C  
     cmssw_base = os.getenv('CMSSW_BASE')
     try:
-      ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/ShapeAnalysis/src/DYEST.C+g')
+      ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/ShapeAnalysis/src/DYEST.C+')
     except RuntimeError:
-      ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/ShapeAnalysis/src/DYEST.C++g')
+      ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/ShapeAnalysis/src/DYEST.C++')
 
 
     DYCalc = ROOT.DYCalc()

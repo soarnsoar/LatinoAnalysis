@@ -41,9 +41,9 @@ class qq2vvEWKcorrectionsWeightFiller(TreeCloner):
 
         cmssw_base = os.getenv('CMSSW_BASE')
         try:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/qq2vvEWKcorrectionsWeight.C+g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/qq2vvEWKcorrectionsWeight.C+')
         except RuntimeError:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/qq2vvEWKcorrectionsWeight.C++g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/qq2vvEWKcorrectionsWeight.C++')
         #----------------------------------------------------------------------------------------------------
 
         qq2vvEWKcorrections = ROOT.qq2vvEWKcorrections(cmssw_base+'/src/LatinoAnalysis/Gardener/python/data/ewk/out_qqbww_EW_L8_200_forCMS.dat')

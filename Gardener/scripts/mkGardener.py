@@ -160,9 +160,9 @@ if options.runBatch:
   for fn in os.listdir(pathRootMacro):
     if os.path.isfile(pathRootMacro+fn) and ( fn.endswith('.C') or fn.endswith('.cc') ):
       try:
-        ROOT.gROOT.LoadMacro(pathRootMacro+fn+'+g')
+        ROOT.gROOT.LoadMacro(pathRootMacro+fn+'+')
       except RuntimeError:
-        ROOT.gROOT.LoadMacro(pathRootMacro+fn+'++g')
+        ROOT.gROOT.LoadMacro(pathRootMacro+fn+'++')
 # Loop on input productions
 for iProd in prodList :
   cmssw=options.cmssw

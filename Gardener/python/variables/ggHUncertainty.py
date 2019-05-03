@@ -84,9 +84,9 @@ class ggHUncertaintyMaker(TreeCloner) :
 
         cmssw_base = os.getenv('CMSSW_BASE')
         try:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C+g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C+')
         except RuntimeError:
-            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C++g')
+            ROOT.gROOT.LoadMacro(cmssw_base+'/src/LatinoAnalysis/Gardener/python/variables/ggHUncertainty.C++')
         #----------------------------------------------------------------------------------------------------
 
         ggHUncertainty = ROOT.ggHUncertainty()
