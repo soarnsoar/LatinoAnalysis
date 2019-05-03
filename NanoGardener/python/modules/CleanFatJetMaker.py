@@ -31,10 +31,10 @@ class CleanFatJetMaker(Module):
         for typ in CleanFatJet_br:
            for var in CleanFatJet_br[typ]:
               if 'CleanFatJet_' in var: self.out.branch(var, typ, lenVar='nCleanFatJet')
-   def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
+    def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         pass
 
-   def initReaders(self,tree): # this function gets the pointers to Value and ArrayReaders and sets them in the C++ worker class                                                                                                                            
+    def initReaders(self,tree): # this function gets the pointers to Value and ArrayReaders and sets them in the C++ worker class                                                                                                                            
        
        self.fatjet_var = {}
        for br in tree.GetListOfBranches():
@@ -44,7 +44,7 @@ class CleanFatJetMaker(Module):
        self.nFatJet = tree.valueReader('nFatJet')
        self._ttreereaderversion = tree._ttreereaderversion # self._ttreereaderversion must be set AFTER all calls to tree.valueReader or tree.arrayReader
 
-   def analyze(self, event):
+    def analyze(self, event):
        """process event, return True (go to next module) or False (fail, go to next event)"""
 
        if event._tree._ttreereaderversion > self._ttreereaderversion: # do this check at every event, as other modules might have read further branches
