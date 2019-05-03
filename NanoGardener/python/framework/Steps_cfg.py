@@ -353,6 +353,15 @@ Steps = {
                   'module'     : 'jetSel()' ,
                }, 
 
+  'fatjetMaker' : {
+                  'isChain'   : False ,
+                  'do4MC'     : True  ,
+                  'do4Date'   : True  ,
+                  'import'    : 'LatinoAnalysis.NanoGardener.modules.CleanFatJetMaker',
+                  'declare'   : 'cleanfatjetMkr = lambda : CleanFatJetMaker()',
+                  'module'    : 'cleanfatjetMkr()' ,
+               },
+
    'CleanJetCut' : {
                  'isChain'    : False ,
                   'do4MC'      : True  ,
