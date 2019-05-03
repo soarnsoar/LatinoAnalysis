@@ -66,7 +66,7 @@ class CleanFatJetMaker(Module):
            # Start comparing jets                                                                                              
            for iFJ2 in range(nFJt):
                if iFJ2 == iFJ1: continue #same fatjet. 
-               pt2 = self.fatjet_var['Jet_pt'][iFJ2]
+               pt2 = self.fatjet_var['FatJet_pt'][iFJ2]
                if pt1 < pt2 or (pt1==pt2 and iFJ1>iFJ2): ##pt ordering. if the same pt -> ordering by original idx
                    pt_idx += 1
            # Now index is set, fill the vars                                                                                   
