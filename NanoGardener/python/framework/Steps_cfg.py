@@ -16,6 +16,13 @@ Steps = {
                   'subTargets' : ['leptonMaker'],
                  },
 
+  'CleanFatJetMakerTest' :{
+        'isChain'    : True  ,
+        'do4MC'      : True  ,
+        'do4Data'    : False ,
+        'subTargets' : ['cleanfatjetMaker'],
+
+        },
 ## ------- MC:
 
 # 'MCl1loose2016': {
@@ -353,7 +360,7 @@ Steps = {
                   'module'     : 'jetSel()' ,
                }, 
 
-  'fatjetMaker' : {
+  'cleanfatjetMaker' : {
                   'isChain'   : False ,
                   'do4MC'     : True  ,
                   'do4Date'   : True  ,
