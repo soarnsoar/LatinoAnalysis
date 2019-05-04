@@ -55,7 +55,7 @@ class FatJetSel(Module):##inherit from Module
           pt  = fatjet_coll[iFatJet]['pt'] ##it will read 'FatJet_pt[iFatJet]'
           eta = fatjet_coll[iFatJet]['eta']
           if 'Clean' in self.fatjetColl :
-              jetId = ori_fatjet_coll[fatjet_coll[iFatJet]['jetIdx']]['jetId'] ##jetid of original(nanoAOD)jet
+              jetId = ori_fatjet_coll[fatjet_coll[iFatJet]['fatjetIdx']]['jetId'] ##jetid of original(nanoAOD)jet
           else:
               jetId = fatjet_coll[iFatJet]['jetId']
 
