@@ -68,6 +68,8 @@ Samples['WWTo2L2NuHerwigPS']    = {'nanoAOD' :'/WWTo2L2Nu_13TeV-powheg-herwigpp/
 #### WW CUET variations 
 
 Samples['WWTo2L2Nu_CUETUp'] = {'nanoAOD' :'/WWTo2L2Nu_13TeV-powheg-CUETP8M1Up/RunIISummer16NanoAODv4-PUMoriond17_Nano14Dec2018_102X_mcRun2_asymptotic_v6-v1/NANOAODSIM'}
+#Samples['WWTo2L2Nu_CUETDown']  = {'nanoAOD' :'/WWTo2L2Nu_13TeV-powheg-CUETP8M1Down/RunIISummer16NanoAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/NANOAODSIM'}
+
 
 Samples['WW-LO'] = {'nanoAOD' :'/WW_TuneCUETP8M1_13TeV-pythia8/RunIISummer16NanoAODv4-PUMoriond17_Nano14Dec2018_102X_mcRun2_asymptotic_v6-v1/NANOAODSIM'}
 Samples['WW-LOext1'] = {'nanoAOD' :'/WW_TuneCUETP8M1_13TeV-pythia8/RunIISummer16NanoAODv4-PUMoriond17_Nano14Dec2018_102X_mcRun2_asymptotic_v6_ext1-v1/NANOAODSIM'}
