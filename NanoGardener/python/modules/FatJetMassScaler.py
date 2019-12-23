@@ -23,6 +23,7 @@ class FatJetMassScaler(Module):
         self.year = year
         self.collection = collection
         self.type = type
+        #print '[jhchoi]',type
         self.kind = kind
          # initialize random number generator
         self.rnd = ROOT.TRandom3(12345)
@@ -38,6 +39,8 @@ class FatJetMassScaler(Module):
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
         self.out = wrappedOutputTree
         # Smearing factor saved for variations
+        #print "[jhchoi]make new branch "
+
         self.out.branch(self.collection+'_smearfactor', "F", lenVar="n"+self.collection)
         # Mass
         self.out.branch(self.collection+"_mass", "F", lenVar="n"+self.collection)
@@ -53,7 +56,7 @@ class FatJetMassScaler(Module):
         # if len(fatjets)>0 and self.kind != "Central":  
         #     print "previous smear:  ", [ f.smearfactor for f in fatjets]
         #     print "previous mass: ",[f.mass for f in fatjets]
-
+        #print 'nfatjet=',len(fatjets)
         for fatjet in fatjets:
             if self.kind == "Central":
                 # Nominal scale/smearing
@@ -66,13 +69,18 @@ class FatJetMassScaler(Module):
                 if self.type == "scale":
                     masses.append(self.scaleFatJetMass(fatjet.mass, self.kind))
                 elif self.type == "smear":
+                    #print "[jhchoi] if smear"
                     new_mass, smearfactor = self.smearFatJetMass(fatjet.mass, fatjet.smearfactor, self.kind)
+                    #print "[jhchoi] after call self.smearFatJetMass, the function must be called before this message"
                     masses.append(new_mass)
+                    #print "[jhchoi]smearfactor=",smearfactor
                     smearfactors.append(smearfactor)
 
         # save output
         self.out.fillBranch(self.collection+"_mass", masses)
-
+        #print "[jhchoi]before fill smearfactor"
+        #print "[jhchoi]type of smearfactors",type(smearfactors)
+        #print "[jhchoi]smearfactors=",smearfactors
         if self.kind == "Central" or self.type == "smear":
             self.out.fillBranch(self.collection+"_smearfactor", smearfactors)
 
@@ -95,12 +103,14 @@ class FatJetMassScaler(Module):
         return new_mass
 
     def smearFatJetMass(self, mass, current_smear, kind):
+        #print "[jhchoi] in smearFatJetMass"
         res_MC = JMR_MC[self.year]
         res_SF_central = JMR_sf[self.year][0]
 
         if kind == "Central":
             if res_SF_central > 1: 
                 sigma_MC = self.rnd.Gaus(0, res_MC)
+                #print '[jhchoi]sigma_MC=',sigma_MC
                 smearfactor = 1 + (sigma_MC/mass)* sqrt(res_SF_central**2 - 1) 
             else:
                 smearfactor = 1
@@ -114,8 +124,13 @@ class FatJetMassScaler(Module):
             # get the base smearing given by resolution at the beginning
             # This is Gaus(0, res_MC) used for nominal smearing (relative to nominal (scaled) mass)
             raw_mass = mass / current_smear
-            sigma_MC_relative = (current_smear -1)  / ( sqrt(res_SF_central**2 -1))
-            
+            if res_SF_central!=1:
+                sigma_MC_relative = (current_smear -1)  / ( sqrt(res_SF_central**2 -1))
+            else:
+                sigma_MC = self.rnd.Gaus(0, res_MC)
+                sigma_MC_relative= (sigma_MC/mass)
+
+
             if res_SF_var > 1:
                 smearfactor = 1 + sigma_MC_relative*sqrt(res_SF_var**2 - 1)
             else:
@@ -123,5 +138,5 @@ class FatJetMassScaler(Module):
 
         #print "smear factor: ", smearfactor
         new_mass = raw_mass * smearfactor
-
+        #print '[jhchoi]in def smearfactor=',smearfactor
         return new_mass, smearfactor
